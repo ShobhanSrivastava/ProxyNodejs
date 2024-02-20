@@ -8,6 +8,8 @@ const app = express();
 
 app.use(createProxyMiddleware({
     target: TARGET_URL,
+    changeOrigin: true, 
+    secure: false
 }));
 
 app.listen(PORT || 8080, () => {
