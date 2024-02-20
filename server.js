@@ -1,12 +1,12 @@
 const express = require('express');
-const { createProxyMidleware } = require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 require('dotenv').config();
 
 const { PORT, TARGET_URL } = process.env;
 
 const app = express();
 
-app.use(createProxyMidleware({
+app.use(createProxyMiddleware({
     target: TARGET_URL,
 }));
 
