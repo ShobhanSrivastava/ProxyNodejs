@@ -9,7 +9,10 @@ const app = express();
 app.use(createProxyMiddleware({
     target: TARGET_URL,
     changeOrigin: true, 
-    secure: false
+    secure: false,
+    onProxyReq(proxyReq, req, res) {
+        proxyReq.setHeader('ngrok-skip-browser-warning', 'true');
+    }
 }));
 
 app.listen(PORT || 8080, () => {
